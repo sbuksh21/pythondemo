@@ -1,5 +1,4 @@
 import os
-
 # declare variables
 customers=[]
 Tax_Rate=3
@@ -13,12 +12,13 @@ while True:
     # Build CRM Menu
     os.system("clear")
     print("***************************")
-    print("1- Add Customer")
+    print ("\033[1;32;40m 1- Add Customer")
     print("2- List All Customers")
     print("3- Delete Customer")
     print("4- Calculate Salary After Tax")
     print("5- Exit")
     print("***************************")
+   
     choice=int( input("Select an option: ") )
     if choice==1:
         customerName=input("Please type customer name: ")
@@ -43,7 +43,7 @@ while True:
                 
          
         # Check if the customer name exist in customer list or not
-            userConfirmation = input(f"Customer found, Are you sure you want to delete {cust} (Y/N)")
+            userConfirmation = input(f"\033[1;31;40m Are you sure you want to delete {cust} (Y/N)")
             if userConfirmation=="Y":
                 # Remove customer from list
                 customers.remove(cust)
