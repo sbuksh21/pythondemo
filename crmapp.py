@@ -2,6 +2,12 @@ import os
 
 # declare variables
 customers=[]
+Tax_Rate=3
+
+# Functions
+# ===========================================
+def get_salary_after_tax(salary,tax_rate):
+    return salary-(salary*(tax_rate/100))
 
 while True:
     # Build CRM Menu
@@ -10,12 +16,13 @@ while True:
     print("1- Add Customer")
     print("2- List All Customers")
     print("3- Delete Customer")
-    print("4- Exit")
+    print("4- Calculate Salary After Tax")
+    print("5- Exit")
     print("***************************")
     choice=int( input("Select an option: ") )
     if choice==1:
         customerName=input("Please type customer name: ")
-        customerSalary=input("Please type customer salary: ")
+        customerSalary=float(input("Please type customer Salary: "))
         customers.append([customerName,customerSalary])
         print("Done Adding the new customer")
         input("Press Enter To continue ...")
@@ -33,6 +40,7 @@ while True:
             # Checking customer found or no
             if cust[0]==custName: # Customer Found
                 isFound==True
+                
          
         # Check if the customer name exist in customer list or not
             userConfirmation = input(f"Customer found, Are you sure you want to delete {cust} (Y/N)")
@@ -49,13 +57,38 @@ while True:
         input("Press Enter To continue ...")
         
     elif choice==4:
+        # Calculate Salary after apply the tax rate
+        # ask the user for customer name that need to be deleted
+        custName=input("Please type the customer name: ")
+        
+        # search for a customer using above collected value
+        isFound=False
+        
+        
+        
+        for cust in customers:
+            
+            # check if customer exist inside the list of customers or not
+            if cust[0]==custName: # Customer Found
+                #change the isFound flag to true
+                isFound=True
+                
+                # calculate the salary after tax deduction
+                currentSalary=cust[1]
+                salaryAfterTax=get_salary_after_tax(currentSalary,Tax_Rate)
+                print(f"Current Salary: {currentSalary} - Salary Ater Tax: {salaryAfterTax}")
+                
+    
+        if isFound==False:
+            print("Sorry, Customer Not Found, Please type another name")        
+        
+        input("Press Enter To continue ...")
+    
+        
+    elif choice==5:
         print("Thank you for using CRMApp .. Good Bye")
         input("Press Enter To continue ...")
         break # stop the while loop
     else:
         print("Sorry, You can select between number between 1 and 4")
         input("Press Enter To continue ...")
-    
-
-
-
