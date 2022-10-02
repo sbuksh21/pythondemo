@@ -15,7 +15,8 @@ while True:
     choice=int( input("Select an option: ") )
     if choice==1:
         customerName=input("Please type customer name: ")
-        customers.append(customerName)
+        customerSalary=input("Please type customer salary: ")
+        customers.append([customerName,customerSalary])
         print("Done Adding the new customer")
         input("Press Enter To continue ...")
     elif choice==2:
@@ -30,14 +31,14 @@ while True:
         isFound=False #To check if customer not found and break the loop
         for cust in customers:
             # Checking customer found or no
-            if cust==custName: # Customer Found
+            if cust[0]==custName: # Customer Found
                 isFound==True
          
         # Check if the customer name exist in customer list or not
             userConfirmation = input(f"Customer found, Are you sure you want to delete {cust} (Y/N)")
             if userConfirmation=="Y":
                 # Remove customer from list
-                customers.remove(custName)
+                customers.remove(cust)
                 print(f"Customer has been deleted {cust}")
                 isFound=True #If customer is found 
                 break
